@@ -1,10 +1,11 @@
 class UserModel{
   String? uid;
+  String? imagePath;
   String? email;
   String? firstName;
   String? secondName; 
 
-  UserModel({this.uid,this.email,this.firstName,this.secondName});
+  UserModel({this.uid,this.imagePath,this.email,this.firstName,this.secondName});
 
   //reciving data from server
 

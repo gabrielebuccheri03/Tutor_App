@@ -2,8 +2,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:tutorappalpha/screen/user.dart';
-import 'package:tutorappalpha/screen/userPreferences.dart';
 import 'package:tutorappalpha/screen/profilewidget.dart';
+import 'package:tutorappalpha/screen/userPreferences.dart';
+import 'package:tutorappalpha/GlobalVariables.dart' as globals;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -28,26 +29,27 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 30),
           buildName(user),
           const SizedBox(height: 50),
-          buildAbout(user),
+          //buildAbout(user),
         ],
       ),
     );
   }
+
   Widget buildName(User user) => Column(
     children: [
       Text(
-        user.firstName+" "+user.secondName,
+        (globals.user.firstName ?? "null") +" "+ (globals.user.secondName?? "null"),
         style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),
       ),
       const SizedBox(height: 8),
       Text(
-        user.email,
+        (globals.user.email ?? "null"),
         style: TextStyle(color: Colors.grey),
       )
-      
+     
     ],
   );
-
+/*
   Widget buildAbout(User user) => Container(
     padding: EdgeInsets.symmetric(horizontal: 48),
     child:Column(
@@ -59,13 +61,13 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const SizedBox(height: 16),
           Text(
-            user.about,
+            UserPreferences.myUser.about,
             style: TextStyle(fontSize: 16,height: 1.4),
           ),
       ], 
     )
   );
-
+*/
 
 }
 

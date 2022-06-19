@@ -2,11 +2,11 @@
    
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tutorappalpha/model/user_model.dart';
-import 'package:tutorappalpha/screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tutorappalpha/screen/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tutorappalpha/screen/homepage.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -92,7 +92,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             color: Colors.black,
           ),
           suffixIcon: IconButton(
-            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off,),
+            icon: Icon(_isObscure ? Icons.visibility_off : Icons.visibility),
             color: Colors.black,
             onPressed:(){
               setState(() {
@@ -312,7 +312,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     Navigator.pushAndRemoveUntil(
       (context),
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(builder: (context) => HomePage()),
       (route) => false
     );
   }

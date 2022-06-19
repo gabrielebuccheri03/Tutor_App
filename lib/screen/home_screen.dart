@@ -33,8 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
         .then((value) {
       loggedInUser = UserModel.fromMap(value.data());
       setState(() {});
+      globals.user=loggedInUser;
+      print(globals.user.firstName);
+      print(globals.user.secondName);
     });
-    globals.user=loggedInUser;
+    
   }
 
   @override
@@ -58,32 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 150,
-              child : Image.asset("assets/Tutor.png",fit : BoxFit.contain), 
-              ),
-              Text(
-                "Benvenuto", 
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10,),
-              Text(
-                "${loggedInUser.firstName} ${loggedInUser.secondName}",
-                style: TextStyle(color:Color(0xFFb6b9ba), fontWeight: FontWeight.w500),
-              ),
-              Text(
-                "${loggedInUser.email}",
-                style: TextStyle(color:Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: 15,),
-              ActionChip(
-                backgroundColor: Colors.white,
-                avatar: Icon(Icons.logout, color: Color(0xFF3c8eec),),
-                label: Text("Esci", style: TextStyle(color: Color(0xFF3c8eec),fontWeight: FontWeight.bold,fontSize: 14)),
-                onPressed: (){
-                  logout(context);
-                }
-                
-              )
+              
             ],
           )
         )
@@ -95,5 +73,5 @@ class _HomeScreenState extends State<HomeScreen> {
       await FirebaseAuth.instance.signOut();
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => LoginScreen()));
-    }
+  }
 }
