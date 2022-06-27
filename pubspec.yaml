@@ -57,6 +57,13 @@ flutter:
     - assets/Tutor.png
     - assets/zyzzpic.jpg
     - assets/gym.jpg
+    - assets/matematica.png
+    - assets/fotografia.png
+    - assets/biologia.jpg
+    - assets/russo.png
+    - assets/scacchi.png
+    - assets/webdevelopment.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

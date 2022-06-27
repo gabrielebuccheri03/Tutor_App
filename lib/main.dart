@@ -5,20 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:tutorappalpha/screen/login_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-/*
-  final String _baseURL='https://parseapi.back4app.com/classes/';
-  final keyApplicationId ='hkht0oxw04SRMepe1ud05BK8aNpTpSlc8ofCZJfs';
-  final keyClientkey = 'yWUaXxfkJwTO3pnYWzpTadGTy7dtJaADWFqWpKyn';
-  final keyParseServerURL = 'https://parseapi.back4app.com';
-
-  await Parse().initialize(keyApplicationId, keyParseServerURL, clientKey: keyClientkey, debug: true);
-  var utente=ParseObject('utenti')..set('nome','gianni');
-  await utente.save();
-*/
 
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -28,15 +20,35 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
+  Future<List> getData() async{
+
+    http.Response response = await http.get(
+      Uri.parse("https://aqueous-everglades-78338.herokuapp.com/ads?type=piacere"),
+      headers: {
+        "Accept": "application/json"
+      }
+    );
+
+    print(response.body);
+    List data = jsonDecode(response.body);
+    return data;
+
+  }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+    ]);
+    getData();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  LoginScreen(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'LeonSans',
+        fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorappalpha/screen/home_screen.dart';
 import 'package:tutorappalpha/screen/profilepage.dart';
+import 'package:tutorappalpha/GlobalVariables.dart' as globals;
 
 class HomePage extends StatefulWidget {
   
@@ -12,11 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _BottomBarState extends State<HomePage> {
-  int _currentIndex = 0;
+  int _currentIndex = globals.index;
 
   final  List<Widget> tabs = [
     Center(child: HomeScreen(),),
     Center(child: Text('Search'),),
+    Center(child: Text("Aggiungi"),),
     Center(child: ProfilePage(),),
   ];
   @override
@@ -28,48 +30,65 @@ class _BottomBarState extends State<HomePage> {
         ClipRRect(borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0),topRight: Radius.circular(30.0),),
           child: */BottomNavigationBar(
             items:[  
+
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home, color: Color(0xFF3c8eec),size: 30),
                     label:"Home",
                     activeIcon: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Icon(Icons.home)
+                      )
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Icon(Icons.home)
-                    )
                   ),
-                  ),
+
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search, color: Color(0xFF3c8eec),size: 30),
                     label:"Cerca",
                     activeIcon: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Icon(Icons.search)
+                      )
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Icon(Icons.search)
-                    )
                   ),
-                    
+
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add_box, color: Color(0xFF3c8eec),size: 30),
+                    label:"Aggiungi",
+                    activeIcon: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Icon(Icons.search)
+                      )
+                    ),
                   ),
+
                   BottomNavigationBarItem(
                     icon: Icon(Icons.person, color: Color(0xFF3c8eec),size: 30),
                     label:"Profilo",
                     activeIcon: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Icon(Icons.person)
+                      )
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Icon(Icons.person)
-                    )
-                  ),
                   ),
                 ],
                 currentIndex: _currentIndex,
@@ -85,6 +104,7 @@ class _BottomBarState extends State<HomePage> {
                 onTap: (index){
                   setState(() {
                     _currentIndex = index;
+                    globals.index=index;
                     print(index);
                   });
                 },

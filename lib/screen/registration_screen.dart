@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:tutorappalpha/screen/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tutorappalpha/screen/homepage.dart';
+import 'package:http/http.dart' as http;
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -309,6 +310,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     await firebaseFirestore.collection("users").doc(user.uid).set(userModel.tomap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
+    try{
+      var response = await http.post(
+        Uri.parse("https://jsonplaceholder.typicode.com/posts"),
+        body: {
+          "token" : userModel.uid,
+          "firstName" : userModel.firstName,
+          "secondName" : secondNameController.text,
+          "email" : userModel.email
+        }
+      );
+      print(response.body);
+    }
+    catch(e){
+      print(e);
+    }
 
     Navigator.pushAndRemoveUntil(
       (context),
