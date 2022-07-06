@@ -40,7 +40,7 @@ class _CreateAdState extends State<CreateAd> {
                     labelText: "Titolo dell'annuncio",
                   ),
                   validator: (value){
-                    if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)){
+                    if(value!.isEmpty || !RegExp(r'^[a-z A-Z ]+$').hasMatch(value)){
                       return "Inserisci un nome adatto (a-z, A-Z)";
                     }
                     else{
@@ -55,7 +55,7 @@ class _CreateAdState extends State<CreateAd> {
                     labelText: "Descrizione dell'annuncio",
                   ),
                   validator: (value){
-                    if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)){
+                    if(value!.isEmpty || !RegExp(r'^[a-z A-Z .]+$').hasMatch(value)){
                       return "Inserisci una descrizione adatta (a-z, A-Z)";
                     }
                     else{

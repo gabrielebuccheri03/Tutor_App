@@ -96,19 +96,21 @@ class _HomeScreenState extends State<SearchScreen> {
                       ),
                     ),
                     Padding(
+
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'No results found,\nPlease try different keyword',
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.w600),
                       ),
+                      
                     ),
                   ],
                 ),
               ),
             )
     : Padding(
-        padding: const EdgeInsets.only(top: 36.0, bottom: 32.0, left: 16.0, right: 16.0),
+        padding: const EdgeInsets.only(top: 0, bottom: 32.0, left: 16.0, right: 16.0),
         child: FutureBuilder<String>(
           future: getData(),
           builder: (context, snapshot) {
@@ -137,6 +139,7 @@ class adsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: BouncingScrollPhysics(),
       itemCount: data["rows"].length,
       itemBuilder: (context,index) {
         return Padding(
@@ -154,12 +157,14 @@ class adsList extends StatelessWidget {
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SpecificPage(data: data['rows'][index])));
                 },
-                child: Column(
-                  children: [
-                    Text(data['rows'][index]['title'],style: TextStyle(fontSize: 20),),
-                    Text(data['rows'][index]['field'])
-                  ],
-                ),
+
+                  child:Column(
+                    children: [
+                      Text(data['rows'][index]['title'],style: TextStyle(fontSize: 20),),
+                      Text(data['rows'][index]['field'],style: TextStyle(fontSize: 14),)
+                    ],
+                  ),
+                
               )  
             ],
           ),

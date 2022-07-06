@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-
-
 import 'package:flutter/material.dart';
 
 
@@ -14,8 +12,9 @@ class SpecificPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return SafeArea(
+      
       child: Scaffold(
-        
+        appBar: null,
         body: 
           Padding(
             padding: EdgeInsets.all(16.0),
