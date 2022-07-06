@@ -136,8 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Center(
             child: SingleChildScrollView(
           child: Container(
+            
             color: Colors.white,
             child: Padding(
+
               padding: const EdgeInsets.all(30.0),
               child: Form(
                 key: formKey,
@@ -182,6 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ]),
+
               ),
             ),
           ),

@@ -312,7 +312,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Fluttertoast.showToast(msg: "Account created successfully :) ");
     try{
       var response = await http.post(
-        Uri.parse("https://jsonplaceholder.typicode.com/posts"),
+        Uri.parse("https://aqueous-everglades-78338.herokuapp.com/users"),
         body: {
           "token" : userModel.uid,
           "firstName" : userModel.firstName,
@@ -331,6 +331,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       MaterialPageRoute(builder: (context) => HomePage()),
       (route) => false
     );
+    
   }
 
 }

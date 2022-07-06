@@ -1,15 +1,18 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:tutorappalpha/screen/create_ad.dart';
 import 'package:tutorappalpha/screen/home_screen.dart';
 import 'package:tutorappalpha/screen/profilepage.dart';
 import 'package:tutorappalpha/GlobalVariables.dart' as globals;
+import 'package:tutorappalpha/screen/search_screen.dart';
 
 class HomePage extends StatefulWidget {
   
   HomePage();
   @override
   _BottomBarState createState() => _BottomBarState();
+
 }
 
 class _BottomBarState extends State<HomePage> {
@@ -17,16 +20,19 @@ class _BottomBarState extends State<HomePage> {
 
   final  List<Widget> tabs = [
     Center(child: HomeScreen(),),
-    Center(child: Text('Search'),),
-    Center(child: Text("Aggiungi"),),
+    Center(child: SearchScreen(),),
+    Center(child: CreateAd(),),
     Center(child: ProfilePage(),),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body:Center(child:tabs[_currentIndex]),
       bottomNavigationBar: 
+
       /*
+
         ClipRRect(borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0),topRight: Radius.circular(30.0),),
           child: */BottomNavigationBar(
             items:[  
@@ -71,7 +77,7 @@ class _BottomBarState extends State<HomePage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Icon(Icons.search)
+                        child: Icon(Icons.add_box)
                       )
                     ),
                   ),
@@ -112,5 +118,7 @@ class _BottomBarState extends State<HomePage> {
               ),
       //)
     );
+
   }
+  
 }

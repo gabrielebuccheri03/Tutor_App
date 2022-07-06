@@ -17,32 +17,15 @@ Future<void> main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
-  Future<List> getData() async{
-
-    http.Response response = await http.get(
-      Uri.parse("https://aqueous-everglades-78338.herokuapp.com/ads?type=piacere"),
-      headers: {
-        "Accept": "application/json"
-      }
-    );
-
-    print(response.body);
-    List data = jsonDecode(response.body);
-    return data;
-
-  }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
     ]);
-    getData();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  LoginScreen(),
