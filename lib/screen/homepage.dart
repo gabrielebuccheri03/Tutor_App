@@ -31,10 +31,7 @@ class _BottomBarState extends State<HomePage> {
       body:Center(child:tabs[_currentIndex]),
       bottomNavigationBar: 
 
-      /*
-
-        ClipRRect(borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0),topRight: Radius.circular(30.0),),
-          child: */BottomNavigationBar(
+      BottomNavigationBar(
             items:[  
 
                   BottomNavigationBarItem(
@@ -116,9 +113,8 @@ class _BottomBarState extends State<HomePage> {
                 },
 
               ),
-      //)
     );
 
   }
-  
+
 }

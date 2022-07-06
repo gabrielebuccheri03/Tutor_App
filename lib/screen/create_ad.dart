@@ -16,11 +16,13 @@ class _CreateAdState extends State<CreateAd> {
   @override
   
   Widget build(BuildContext context) {
+
     final double height= MediaQuery.of(context).size.height;
     final TitleController= TextEditingController();
     final DescriptionController= TextEditingController();
     final FieldController= TextEditingController();
     final PhoneNumberController= TextEditingController();
+
     return Scaffold(
       body:Container(
       padding: const EdgeInsets.only(left: 40, right: 40,top: 40),
@@ -94,6 +96,7 @@ class _CreateAdState extends State<CreateAd> {
                   },
                 ),
                 SizedBox(height: height*0.1,),
+                
                 Row(
                   children: [
                     Text("Pubblica",style: TextStyle(fontSize: 22, color: Color(0xFF363f93)),),
@@ -115,9 +118,9 @@ class _CreateAdState extends State<CreateAd> {
                         child: const Icon(Icons.send),
                       ),
                     )
-                  
                   ],
                 ),
+
                 SizedBox(height: height*0.02,),
               ],
             )
